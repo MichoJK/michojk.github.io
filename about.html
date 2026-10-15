@@ -55,6 +55,13 @@ body {
 .links a { text-decoration: none; font-size: .95rem; padding: .3em .95em; border-radius: 999px; }
 .go { background: var(--accent); color: var(--accent-ink); }
 .toc { border: 1px solid var(--line); color: var(--ink); }
+.card { position: relative; }
+.card h2 { padding-right: 4.2em; }
+.share { position: absolute; top: 20px; right: 18px; display: inline-flex; align-items: center; gap: .3em;
+  font-size: .85rem; color: var(--muted); text-decoration: none; padding: .2em .6em;
+  border: 1px solid var(--line); border-radius: 999px; }
+.share:hover { color: var(--accent); border-color: var(--accent); }
+.share svg { display: block; }
 .links a:hover { opacity: .85; }
 footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: .9rem; }
 footer a.about { color: var(--muted); }
