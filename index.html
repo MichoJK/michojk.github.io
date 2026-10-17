@@ -57,11 +57,24 @@ body {
 .toc { border: 1px solid var(--line); color: var(--ink); }
 .card { position: relative; }
 .card h2 { padding-right: 4.2em; }
-.share { position: absolute; top: 20px; right: 18px; display: inline-flex; align-items: center; gap: .3em;
-  font-size: .85rem; color: var(--muted); text-decoration: none; padding: .2em .6em;
-  border: 1px solid var(--line); border-radius: 999px; }
-.share:hover { color: var(--accent); border-color: var(--accent); }
-.share svg { display: block; }
+.share { position: absolute; top: 20px; right: 18px; z-index: 5; }
+.share summary, .band-share summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: .3em;
+  font-size: .85rem; color: var(--muted); padding: .2em .6em;
+  border: 1px solid var(--line); border-radius: 999px; user-select: none; }
+.share summary::-webkit-details-marker, .band-share summary::-webkit-details-marker { display: none; }
+.share summary:hover, .share[open] summary { color: var(--accent); border-color: var(--accent); }
+.share svg, .band-share svg { display: block; }
+.menu { position: absolute; right: 0; top: calc(100% + 6px); min-width: 9.5em; padding: 6px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25); display: flex; flex-direction: column; text-align: left; }
+.menu a, .menu button { font: inherit; font-size: .92rem; color: var(--ink); background: none; border: 0;
+  text-align: left; text-decoration: none; padding: .35em .7em; border-radius: 6px; cursor: pointer; }
+.menu a:hover, .menu button:hover, .menu a:focus-visible, .menu button:focus-visible { background: var(--line); }
+.menu button[hidden] { display: none; }
+.band-share { display: inline-block; position: relative; margin-top: 14px; }
+.band-share summary { color: var(--band-muted); border-color: var(--band-muted); }
+.band-share summary:hover, .band-share[open] summary { color: var(--band-ink); border-color: var(--band-ink); }
+.band-share .menu { right: auto; left: 50%; transform: translateX(-50%); z-index: 5; }
 .links a:hover { opacity: .85; }
 footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: .9rem; }
 footer a.about { color: var(--muted); }
@@ -82,46 +95,47 @@ footer a.about { color: var(--muted); }
 <header class="band">
   <h1>巴利三藏漢譯</h1>
   <p class="sub">米球（Micho）的南傳巴利三藏現代語譯</p>
+  <details class="band-share"><summary aria-label="分享巴利三藏漢譯"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmichojk.github.io%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmichojk.github.io%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmichojk.github.io%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmichojk.github.io%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmichojk.github.io%2F&text=%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmichojk.github.io%2F">電子郵件</a><button type="button" data-copy="https://michojk.github.io/">複製連結</button><button type="button" data-native="https://michojk.github.io/" data-title="巴利三藏漢譯" hidden>其他…</button></div></details>
 </header>
 <div class="wrap">
 <main class="grid">
 <article class="card">
-  <a class="share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener" aria-label="分享《長部》到 Facebook"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>分享</a>
+  <details class="share"><summary aria-label="分享《長部》"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E3%80%8A%E9%95%B7%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E3%80%8A%E9%95%B7%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmicho-digha.blogspot.com%2F&text=%E3%80%8A%E9%95%B7%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E3%80%8A%E9%95%B7%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmicho-digha.blogspot.com%2F">電子郵件</a><button type="button" data-copy="https://micho-digha.blogspot.com/">複製連結</button><button type="button" data-native="https://micho-digha.blogspot.com/" data-title="《長部》｜巴利三藏漢譯" hidden>其他…</button></div></details>
   <h2><a href="https://micho-digha.blogspot.com/">《長部》</a></h2>
   <p class="pali">Dīgha Nikāya</p>
   <p class="desc">三品三十四經。篇幅最長的經：六十二見之網、沙門果、世尊最後的旅程。</p>
   <p class="links"><a class="go" href="https://micho-digha.blogspot.com/">進入</a><a class="toc" href="https://micho-digha.blogspot.com/2026/09/blog-post.html">完整經文目錄</a></p>
 </article>
 <article class="card">
-  <a class="share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-chang.blogspot.com%2F" target="_blank" rel="noopener" aria-label="分享《中部》到 Facebook"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>分享</a>
+  <details class="share"><summary aria-label="分享《中部》"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-chang.blogspot.com%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmicho-chang.blogspot.com%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E3%80%8A%E4%B8%AD%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmicho-chang.blogspot.com%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E3%80%8A%E4%B8%AD%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmicho-chang.blogspot.com%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmicho-chang.blogspot.com%2F&text=%E3%80%8A%E4%B8%AD%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E3%80%8A%E4%B8%AD%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmicho-chang.blogspot.com%2F">電子郵件</a><button type="button" data-copy="https://micho-chang.blogspot.com/">複製連結</button><button type="button" data-native="https://micho-chang.blogspot.com/" data-title="《中部》｜巴利三藏漢譯" hidden>其他…</button></div></details>
   <h2><a href="https://micho-chang.blogspot.com/">《中部》</a></h2>
   <p class="pali">Majjhima Nikāya</p>
   <p class="desc">三篇十五品一百五十二經。中等篇幅，教法與修行次第最完整的一部。</p>
   <p class="links"><a class="go" href="https://micho-chang.blogspot.com/">進入</a><a class="toc" href="https://micho-chang.blogspot.com/2026/08/blog-post.html">完整經文目錄</a></p>
 </article>
 <article class="card">
-  <a class="share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-samyutta.blogspot.com%2F" target="_blank" rel="noopener" aria-label="分享《相應部》到 Facebook"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>分享</a>
+  <details class="share"><summary aria-label="分享《相應部》"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-samyutta.blogspot.com%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmicho-samyutta.blogspot.com%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E3%80%8A%E7%9B%B8%E6%87%89%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmicho-samyutta.blogspot.com%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E3%80%8A%E7%9B%B8%E6%87%89%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmicho-samyutta.blogspot.com%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmicho-samyutta.blogspot.com%2F&text=%E3%80%8A%E7%9B%B8%E6%87%89%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E3%80%8A%E7%9B%B8%E6%87%89%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmicho-samyutta.blogspot.com%2F">電子郵件</a><button type="button" data-copy="https://micho-samyutta.blogspot.com/">複製連結</button><button type="button" data-native="https://micho-samyutta.blogspot.com/" data-title="《相應部》｜巴利三藏漢譯" hidden>其他…</button></div></details>
   <h2><a href="https://micho-samyutta.blogspot.com/">《相應部》</a></h2>
   <p class="pali">Saṃyutta Nikāya</p>
   <p class="desc">五品五十六相應。依主題分類的短經：緣起、五蘊、六處、道支。</p>
   <p class="links"><a class="go" href="https://micho-samyutta.blogspot.com/">進入</a><a class="toc" href="https://micho-samyutta.blogspot.com/2026/09/blog-post_09.html">完整經文目錄</a></p>
 </article>
 <article class="card">
-  <a class="share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-anguttara.blogspot.com%2F" target="_blank" rel="noopener" aria-label="分享《增支部》到 Facebook"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>分享</a>
+  <details class="share"><summary aria-label="分享《增支部》"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-anguttara.blogspot.com%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmicho-anguttara.blogspot.com%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E3%80%8A%E5%A2%9E%E6%94%AF%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmicho-anguttara.blogspot.com%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E3%80%8A%E5%A2%9E%E6%94%AF%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmicho-anguttara.blogspot.com%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmicho-anguttara.blogspot.com%2F&text=%E3%80%8A%E5%A2%9E%E6%94%AF%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E3%80%8A%E5%A2%9E%E6%94%AF%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmicho-anguttara.blogspot.com%2F">電子郵件</a><button type="button" data-copy="https://micho-anguttara.blogspot.com/">複製連結</button><button type="button" data-native="https://micho-anguttara.blogspot.com/" data-title="《增支部》｜巴利三藏漢譯" hidden>其他…</button></div></details>
   <h2><a href="https://micho-anguttara.blogspot.com/">《增支部》</a></h2>
   <p class="pali">Aṅguttara Nikāya</p>
   <p class="desc">一集至十一集。依法數編排，從一法到十一法。</p>
   <p class="links"><a class="go" href="https://micho-anguttara.blogspot.com/">進入</a><a class="toc" href="https://micho-anguttara.blogspot.com/2026/09/blog-post_25.html">完整經文目錄</a></p>
 </article>
 <article class="card">
-  <a class="share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-khuddaka.blogspot.com%2F" target="_blank" rel="noopener" aria-label="分享《小部》到 Facebook"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>分享</a>
+  <details class="share"><summary aria-label="分享《小部》"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-khuddaka.blogspot.com%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmicho-khuddaka.blogspot.com%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E3%80%8A%E5%B0%8F%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmicho-khuddaka.blogspot.com%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E3%80%8A%E5%B0%8F%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmicho-khuddaka.blogspot.com%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmicho-khuddaka.blogspot.com%2F&text=%E3%80%8A%E5%B0%8F%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E3%80%8A%E5%B0%8F%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmicho-khuddaka.blogspot.com%2F">電子郵件</a><button type="button" data-copy="https://micho-khuddaka.blogspot.com/">複製連結</button><button type="button" data-native="https://micho-khuddaka.blogspot.com/" data-title="《小部》｜巴利三藏漢譯" hidden>其他…</button></div></details>
   <h2><a href="https://micho-khuddaka.blogspot.com/">《小部》</a></h2>
   <p class="pali">Khuddaka Nikāya</p>
   <p class="desc">早期層七部：經集、法句經、自說經、如是語經、長老偈、長老尼偈、小誦。</p>
   <p class="links"><a class="go" href="https://micho-khuddaka.blogspot.com/">進入</a><a class="toc" href="https://micho-khuddaka.blogspot.com/2026/10/blog-post.html">完整經文目錄</a></p>
 </article>
 <article class="card">
-  <a class="share" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-core.blogspot.com%2F" target="_blank" rel="noopener" aria-label="分享早期共通核心選編到 Facebook"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07"/></svg>分享</a>
+  <details class="share"><summary aria-label="分享早期共通核心選編"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-core.blogspot.com%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmicho-core.blogspot.com%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E6%97%A9%E6%9C%9F%E5%85%B1%E9%80%9A%E6%A0%B8%E5%BF%83%E9%81%B8%E7%B7%A8%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmicho-core.blogspot.com%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E6%97%A9%E6%9C%9F%E5%85%B1%E9%80%9A%E6%A0%B8%E5%BF%83%E9%81%B8%E7%B7%A8%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmicho-core.blogspot.com%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmicho-core.blogspot.com%2F&text=%E6%97%A9%E6%9C%9F%E5%85%B1%E9%80%9A%E6%A0%B8%E5%BF%83%E9%81%B8%E7%B7%A8%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E6%97%A9%E6%9C%9F%E5%85%B1%E9%80%9A%E6%A0%B8%E5%BF%83%E9%81%B8%E7%B7%A8%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmicho-core.blogspot.com%2F">電子郵件</a><button type="button" data-copy="https://micho-core.blogspot.com/">複製連結</button><button type="button" data-native="https://micho-core.blogspot.com/" data-title="早期共通核心選編｜巴利三藏漢譯" hidden>其他…</button></div></details>
   <h2><a href="https://micho-core.blogspot.com/">早期共通核心選編</a></h2>
   <p class="pali">Nikāya &amp; Āgama</p>
   <p class="desc">從五部選出南北傳共通的經，依十個主題重編，附阿含對讀與文本層析。</p>
@@ -133,5 +147,31 @@ footer a.about { color: var(--muted); }
   <p><a class="about" href="about.html">翻譯說明</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  var all = function () { return document.querySelectorAll('details.share, details.band-share'); };
+  document.addEventListener('click', function (e) {
+    all().forEach(function (d) { if (d.open && !d.contains(e.target)) d.open = false; });
+    var c = e.target.closest('[data-copy]');
+    if (c) {
+      var u = c.getAttribute('data-copy'), t = c.textContent;
+      var done = function () { c.textContent = '已複製'; setTimeout(function () { c.textContent = t; }, 1500); };
+      if (navigator.clipboard) navigator.clipboard.writeText(u).then(done, function () { prompt('複製這個網址', u); });
+      else prompt('複製這個網址', u);
+    }
+    var n = e.target.closest('[data-native]');
+    if (n) navigator.share({ title: n.getAttribute('data-title'), url: n.getAttribute('data-native') }).catch(function () {});
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') all().forEach(function (d) { d.open = false; });
+  });
+  all().forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (d.open) all().forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+  if (navigator.share) document.querySelectorAll('[data-native]').forEach(function (b) { b.hidden = false; });
+})();
+</script>
 </body>
 </html>

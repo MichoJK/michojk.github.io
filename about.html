@@ -57,11 +57,24 @@ body {
 .toc { border: 1px solid var(--line); color: var(--ink); }
 .card { position: relative; }
 .card h2 { padding-right: 4.2em; }
-.share { position: absolute; top: 20px; right: 18px; display: inline-flex; align-items: center; gap: .3em;
-  font-size: .85rem; color: var(--muted); text-decoration: none; padding: .2em .6em;
-  border: 1px solid var(--line); border-radius: 999px; }
-.share:hover { color: var(--accent); border-color: var(--accent); }
-.share svg { display: block; }
+.share { position: absolute; top: 20px; right: 18px; z-index: 5; }
+.share summary, .band-share summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: .3em;
+  font-size: .85rem; color: var(--muted); padding: .2em .6em;
+  border: 1px solid var(--line); border-radius: 999px; user-select: none; }
+.share summary::-webkit-details-marker, .band-share summary::-webkit-details-marker { display: none; }
+.share summary:hover, .share[open] summary { color: var(--accent); border-color: var(--accent); }
+.share svg, .band-share svg { display: block; }
+.menu { position: absolute; right: 0; top: calc(100% + 6px); min-width: 9.5em; padding: 6px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25); display: flex; flex-direction: column; text-align: left; }
+.menu a, .menu button { font: inherit; font-size: .92rem; color: var(--ink); background: none; border: 0;
+  text-align: left; text-decoration: none; padding: .35em .7em; border-radius: 6px; cursor: pointer; }
+.menu a:hover, .menu button:hover, .menu a:focus-visible, .menu button:focus-visible { background: var(--line); }
+.menu button[hidden] { display: none; }
+.band-share { display: inline-block; position: relative; margin-top: 14px; }
+.band-share summary { color: var(--band-muted); border-color: var(--band-muted); }
+.band-share summary:hover, .band-share[open] summary { color: var(--band-ink); border-color: var(--band-ink); }
+.band-share .menu { right: auto; left: 50%; transform: translateX(-50%); z-index: 5; }
 .links a:hover { opacity: .85; }
 footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: .9rem; }
 footer a.about { color: var(--muted); }
