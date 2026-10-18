@@ -242,9 +242,16 @@ footer a.about { color: var(--muted); }
     });
     box.appendChild(full);
   };
+  // 中文輸入法（2026-10-18 譯者回報打不出繁體中文）：組字中（注音、倉頡、拼音還沒選字）不重繪結果，
+  // 選完字的 compositionend 才搜；組字中按的 Enter、Esc 是給輸入法選字、取消用的，不當成跳頁與清空。
+  // Safari 選字的那一下 Enter 在 compositionend 之後才到、isComposing 已是 false，只能靠 keyCode 229 認出來。
+  var composing = false;
   q.addEventListener('focus', load);
-  q.addEventListener('input', render);
+  q.addEventListener('compositionstart', function () { composing = true; });
+  q.addEventListener('compositionend', function () { composing = false; render(); });
+  q.addEventListener('input', function (e) { if (!composing && !e.isComposing) render(); });
   q.addEventListener('keydown', function (e) {
+    if (composing || e.isComposing || e.keyCode === 229) return;
     if (e.key === 'Enter') { var a = box.querySelector('a.hit'); if (a) location.href = a.href; }
     if (e.key === 'Escape') { q.value = ''; render(); }
   });
