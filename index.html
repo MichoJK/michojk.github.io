@@ -103,6 +103,21 @@ body {
 .band-share summary:hover, .band-share[open] summary { color: var(--band-ink); border-color: var(--band-ink); }
 .band-share .menu { right: auto; left: 50%; transform: translateX(-50%); z-index: 5; }
 .links a:hover { opacity: .85; }
+.search { margin: 8px 0 22px; }
+.search input { width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: .55em 1.1em; outline: none; }
+.search input:focus { border-color: var(--accent); }
+#hits { margin-top: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px; }
+#hits a.hit { display: flex; gap: .8em; align-items: baseline; padding: .4em .7em; border-radius: 6px;
+  color: var(--ink); text-decoration: none; }
+#hits a.hit:hover, #hits a.hit:focus-visible { background: var(--line); }
+#hits .site { flex: none; font-size: .8rem; color: var(--muted); min-width: 3.5em; }
+#hits .t { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#hits .note { margin: .4em .7em; color: var(--muted); font-size: .9rem; }
+#hits .full { display: flex; flex-wrap: wrap; gap: 6px; margin: .3em .7em .5em; }
+#hits .full a { font-size: .85rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px;
+  padding: .1em .7em; text-decoration: none; }
+#hits .full a:hover { color: var(--accent); border-color: var(--accent); }
 footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: .9rem; }
 footer a.about { color: var(--muted); }
 .prose { max-width: 640px; margin: 0 auto; padding-top: 24px; }
@@ -126,6 +141,10 @@ footer a.about { color: var(--muted); }
   <details class="band-share"><summary aria-label="分享巴利三藏漢譯"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmichojk.github.io%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmichojk.github.io%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmichojk.github.io%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmichojk.github.io%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmichojk.github.io%2F&text=%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmichojk.github.io%2F">電子郵件</a><button type="button" data-copy="https://michojk.github.io/">複製連結</button><button type="button" data-native="https://michojk.github.io/" data-title="巴利三藏漢譯" hidden>其他…</button></div></details>
 </header>
 <div class="wrap">
+<section class="search" role="search">
+  <input type="search" id="q" placeholder="搜尋經名或經號，例如：念處、MN 10、SN 12.15" autocomplete="off" aria-label="搜尋經名或經號">
+  <div id="hits" hidden></div>
+</section>
 <main class="grid">
 <article class="card">
   <details class="share"><summary aria-label="分享《長部》"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>分享</summary><div class="menu" role="menu"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener">Facebook</a><a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener">LINE</a><a href="https://wa.me/?text=%E3%80%8A%E9%95%B7%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF%20https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener">WhatsApp</a><a href="https://x.com/intent/post?text=%E3%80%8A%E9%95%B7%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&url=https%3A%2F%2Fmicho-digha.blogspot.com%2F" target="_blank" rel="noopener">X</a><a href="https://t.me/share/url?url=https%3A%2F%2Fmicho-digha.blogspot.com%2F&text=%E3%80%8A%E9%95%B7%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF" target="_blank" rel="noopener">Telegram</a><a href="mailto:?subject=%E3%80%8A%E9%95%B7%E9%83%A8%E3%80%8B%EF%BD%9C%E5%B7%B4%E5%88%A9%E4%B8%89%E8%97%8F%E6%BC%A2%E8%AD%AF&body=https%3A%2F%2Fmicho-digha.blogspot.com%2F">電子郵件</a><button type="button" data-copy="https://micho-digha.blogspot.com/">複製連結</button><button type="button" data-native="https://micho-digha.blogspot.com/" data-title="《長部》｜巴利三藏漢譯" hidden>其他…</button></div></details>
@@ -175,6 +194,62 @@ footer a.about { color: var(--muted); }
   <p><a class="about" href="about.html">翻譯說明</a></p>
 </footer>
 </div>
+<script>
+(function () {
+  var SITES = [["《長部》", "https://micho-digha.blogspot.com/"], ["《中部》", "https://micho-chang.blogspot.com/"], ["《相應部》", "https://micho-samyutta.blogspot.com/"], ["《增支部》", "https://micho-anguttara.blogspot.com/"], ["《小部》", "https://micho-khuddaka.blogspot.com/"], ["早期共通核心選編", "https://micho-core.blogspot.com/"]], idx = null, loading = null;
+  var q = document.getElementById('q'), box = document.getElementById('hits');
+  var norm = function (s) { return s.toLowerCase().replace(/[\s．·・:：，,、（）()《》〈〉「」『』—–\-]/g, ''); };
+  var load = function () {
+    if (!loading) loading = fetch('search.json').then(function (r) { return r.json(); })
+      .then(function (d) { idx = d.map(function (e) { return { t: e[0], s: e[1], u: e[2], n: norm(e[0]) }; }); });
+    return loading;
+  };
+  var el = function (tag, cls, text) { var x = document.createElement(tag); if (cls) x.className = cls; if (text) x.textContent = text; return x; };
+  var render = function () {
+    var raw = q.value.trim();
+    box.innerHTML = '';
+    if (!raw) { box.hidden = true; return; }
+    box.hidden = false;
+    if (!idx) { box.appendChild(el('p', 'note', '載入索引中…')); load().then(render); return; }
+    var toks = raw.split(/\s+/).map(norm).filter(Boolean), whole = norm(raw), hits = [];
+    var an = raw.match(/^\s*an\s*(\d+)\.(\d+)\s*$/i);
+    idx.forEach(function (e, i) {
+      var ok = toks.every(function (t) { return e.n.indexOf(t) >= 0; }), score = 2, p = 0;
+      if (ok) {
+        p = e.n.indexOf(whole);
+        if (p >= 0 && !/\d/.test(e.n.charAt(p + whole.length) || '')) score = 0; else score = 1;
+        if (p < 0) p = e.n.indexOf(toks[0]);
+      } else if (an) {
+        var m = e.t.match(/^AN (\d+)\.(\d+)(?:–(\d+))?/);
+        if (m && +m[1] === +an[1] && +an[2] >= +m[2] && +an[2] <= +(m[3] || m[2])) { ok = true; score = 0; p = (m[3] || m[2]) - m[2]; }   // 範圍越窄越前：品在前，整集的總結在後
+      }
+      // 同一級裡，只有經號經名的短標題在前（打「念處」先出 MN 10 念處經、DN 22 大念處經），
+      // 再按詞出現的位置，最後照索引原順序（相應部各品才不會被打亂）
+      if (ok) hits.push({ e: e, k: score, s: e.n.length > 20 ? 1 : 0, p: p, i: i });
+    });
+    hits.sort(function (a, b) { return a.k - b.k || a.s - b.s || a.p - b.p || a.i - b.i; });
+    hits.slice(0, 30).forEach(function (h) {
+      var a = el('a', 'hit'); a.href = h.e.u;
+      a.appendChild(el('span', 'site', h.e.s)); a.appendChild(el('span', 't', h.e.t)); a.title = h.e.t;
+      box.appendChild(a);
+    });
+    box.appendChild(el('p', 'note', hits.length
+      ? (hits.length > 30 ? '共 ' + hits.length + ' 筆，只列前 30 筆。' : '') + '要找經文裡的字句，用各站的全文搜尋：'
+      : '經名與經號裡找不到。要找經文裡的字句，用各站的全文搜尋：'));
+    var full = el('div', 'full');
+    SITES.forEach(function (s) {
+      var a = el('a', '', s[0]); a.href = s[1].replace(/\/$/, '') + '/search?q=' + encodeURIComponent(raw); full.appendChild(a);
+    });
+    box.appendChild(full);
+  };
+  q.addEventListener('focus', load);
+  q.addEventListener('input', render);
+  q.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { var a = box.querySelector('a.hit'); if (a) location.href = a.href; }
+    if (e.key === 'Escape') { q.value = ''; render(); }
+  });
+})();
+</script>
 <script>
 (function () {
   var all = function () { return document.querySelectorAll('details.share, details.band-share'); };

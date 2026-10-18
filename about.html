@@ -103,6 +103,21 @@ body {
 .band-share summary:hover, .band-share[open] summary { color: var(--band-ink); border-color: var(--band-ink); }
 .band-share .menu { right: auto; left: 50%; transform: translateX(-50%); z-index: 5; }
 .links a:hover { opacity: .85; }
+.search { margin: 8px 0 22px; }
+.search input { width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: var(--card);
+  border: 1px solid var(--line); border-radius: 999px; padding: .55em 1.1em; outline: none; }
+.search input:focus { border-color: var(--accent); }
+#hits { margin-top: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 6px; }
+#hits a.hit { display: flex; gap: .8em; align-items: baseline; padding: .4em .7em; border-radius: 6px;
+  color: var(--ink); text-decoration: none; }
+#hits a.hit:hover, #hits a.hit:focus-visible { background: var(--line); }
+#hits .site { flex: none; font-size: .8rem; color: var(--muted); min-width: 3.5em; }
+#hits .t { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#hits .note { margin: .4em .7em; color: var(--muted); font-size: .9rem; }
+#hits .full { display: flex; flex-wrap: wrap; gap: 6px; margin: .3em .7em .5em; }
+#hits .full a { font-size: .85rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px;
+  padding: .1em .7em; text-decoration: none; }
+#hits .full a:hover { color: var(--accent); border-color: var(--accent); }
 footer { margin-top: 48px; text-align: center; color: var(--muted); font-size: .9rem; }
 footer a.about { color: var(--muted); }
 .prose { max-width: 640px; margin: 0 auto; padding-top: 24px; }
